@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import tv from '../../public/images/tv.png';
 import imdb from '../../public/images/imdb.png';
 import rt from '../../public/images/tomatoes.png';
-import post from '../../public/images/poster.png';
+import post from '../../public/images/Poster.png';
 import { AiOutlineSearch  } from "react-icons/ai";
 import { AiFillPlayCircle  } from "react-icons/ai";
 import { AiOutlineRight  } from "react-icons/ai";
