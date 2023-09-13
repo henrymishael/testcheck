@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import tv from '../../public/images/tv.png';
 import imdb from '../../public/images/imdb.png';
 import rt from '../../public/images/tomatoes.png';
-import poster from '../../public/images/poster.png';
+import post from '../../public/images/poster.png';
 import { AiOutlineSearch  } from "react-icons/ai";
 import { AiFillPlayCircle  } from "react-icons/ai";
 import { AiOutlineRight  } from "react-icons/ai";
@@ -148,7 +148,7 @@ const page = () => {
           </span>
         </nav>
         </div>
-        <Image className='absolute bg-contain w-[100vw] ' src={poster} alt="poster"/>
+        <Image className='absolute bg-contain w-[100vw] ' src={post} alt="poster"/>
         <div className={`w-[100vw] h-[50vh]`}>
         <header className='relative xsm:px-3 lg:px-[70px]  w-[100%] xsm:h-[320px] md:h-[400px] lg:h-[600px] '>
             <nav className='flex flex-row justify-between w-[100%] md:h-[80px] xsm:h-[60px]  items-center '>
