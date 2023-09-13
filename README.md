@@ -33,3 +33,16 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 # testcheck
+
+//Movie box Documentation
+This is a movie discovery web application that allows users to search for movies, view details about them, and save their favorite movies. I’ll be consuming data from the TMDB API.
+
+//search
+Users can search for movies on the search bar of the home page and get results
+
+//Details
+Users can click on the image of a particular movie and it directs to the to the details page of that particular movie
+
+//Favorite
+Users can add to favorite movie they are interested n(stil in progress)
+
