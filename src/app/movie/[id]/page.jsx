@@ -70,7 +70,13 @@ export default function page() {
       : '/../../../../public/images/poster.png';
 
       const releaseDate = new Date(selectedMovie.release_date);
-      const utcReleaseDate = releaseDate.toUTCString();
+      const utcReleaseDay = releaseDate.toUTCString().slice(0,17);
+      // const Day = releaseDate.getUTCDate();
+      // const month = releaseDate.getUTCMonth();
+      // const year = releaseDate.getUTCFullYear();
+      
+      // const utcReleaseDay = `${Day}/${month}/${year}`
+      
     
   return (
     <div className='w-[100vw] h-[100vh] flex  flex-row' >
@@ -108,7 +114,7 @@ export default function page() {
             <div className='mt-3 flex flex-col gap-4 xsm:px-8 md:px-0'>
               <span className='flex md:flex-row xsm:flex-col gap-6 items-center md:justify-between xsm:justify-center'>
               <h2 data-testid='movie-title' className='md:text-[30px] xsm:text-[18px]'>Title: {selectedMovie.title}</h2>
-              <p className='md:text-[20px] xsm:text-[12px] text-center' data-testid='movie-release-date'>Release Date: {utcReleaseDate}</p>
+              <p className='md:text-[20px] xsm:text-[12px] text-center' data-testid='movie-release-date'>Release Date: {utcReleaseDay}</p>
               <p className='md:text-[20px] xsm:text-[12px]'data-testid='movie-runtime'>Runtime: {selectedMovie.runtime}mins</p>
               </span>
               <p data-testid='movie-overview' className='leading-8'>{selectedMovie.overview}</p>
