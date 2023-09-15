@@ -29,7 +29,7 @@ export default function Favorite() {
         setClickFavorite((prevState) => !prevState);
       }
   return (
-    <div className='md:text-[30px] xsm:text-[16px]  ' onClick={toggleFavorite}>
+    <div className='md:text-[30px] xsm:text-[16px] text-white h-[40px] w-[40px] rounded-[100px] flex items-center justify-center bg-[#c5c4c488] ' onClick={toggleFavorite}>
         {clickFavorite ?( <span className='text-red-600'><AiFillHeart/></span>) : <AiOutlineHeart/>}
     </div>
   )

@@ -66,15 +66,15 @@ export default function page() {
     
       }, [id]); // Include 'id' as a dependency to re-fetch when the ID changes
       const posterPath = selectedMovie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`
+      ? `https://image.tmdb.org/t/p/w1280${selectedMovie.poster_path}`
       : '/../../../../public/images/poster.png';
 
       const releaseDate = new Date(selectedMovie.release_date);
       const utcReleaseDate = releaseDate.toUTCString();
     
   return (
-    <div className='w-[100vw] h-[100vh] bg-black flex flex-row' >
-        <div className='xsm:hidden h-[100vh] md:flex flex-col items-center lg:w-[20%] md:w-[30%] bg-[#242424] rounded-tr-[24px] rounded-br-[24px] pt-6 '>
+    <div className='w-[100vw] h-[100vh] flex  flex-row' >
+        <div className='xsm:hidden h-[100vh] md:flex flex-col items-center lg:w-[20%] md:w-[30%] bg-[#242424] rounded-tr-[24px] rounded-br-[24px] text-white pt-6 '>
           <span className='cursor-pointer w-[80%] flex flex-row  justify-around items-center text-[24px] font-semibold'>
                     <Image src={tv} alt="logo" width='50' height='50'/>
                     <h4>MovieBox</h4>
@@ -100,9 +100,10 @@ export default function page() {
           </span>
         </nav>
         </div>
-        <div className='w-[100%] flex flex-col md:px-16 xsm:px-0 items-center '>
-            <div className='w-[100%] h-[70vh] overflow-hidden flex items-center justify-center  border-white border-4 md:rounded-[24px] xsm:rounded-[4px] md:mt-6 xsm:mt-0'>
-              <Image  className='xsm:w-[100%] xsm:h-[100%]' src={posterPath} width='1100' height='100'/>
+        <div className='mt-4 relative w-[100%] flex flex-col md:px-16 xsm:px-0 items-center '>
+        <Image  className='rounded-[16px] absolute lg:bg-cover xsm:bg-contain w-[70vw] lg:h-[70vh]' src={posterPath} width='300' height='300'/>
+            <div className='  w-[100%] h-[600px] overflow-hidden flex items-center justify-center  border-white border-4 md:rounded-[24px] xsm:rounded-[4px] md:mt-6 xsm:mt-0'>
+             
             </div>
             <div className='mt-3 flex flex-col gap-4 xsm:px-8 md:px-0'>
               <span className='flex md:flex-row xsm:flex-col gap-6 items-center md:justify-between xsm:justify-center'>

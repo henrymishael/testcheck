@@ -5,6 +5,7 @@ import tv from '../../public/images/tv.png';
 import imdb from '../../public/images/imdb.png';
 import rt from '../../public/images/tomatoes.png';
 import post from '../../public/images/Poster.png';
+import postsm from '../../public/images/sm.png';
 import { AiOutlineSearch  } from "react-icons/ai";
 import { AiFillPlayCircle  } from "react-icons/ai";
 import { AiOutlineRight  } from "react-icons/ai";
@@ -47,10 +48,11 @@ const page = () => {
     
     const API_KEY = 'api_key=73014d3d6afb77d4c6482499395d4e95'
     const BASE_URL = 'https://api.themoviedb.org/3'
-    const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY
+    const API_URL = BASE_URL + '/movie/top_rated?language=en-US&page=1' + API_KEY
     const IMG_URL = 'https://image.tmdb.org/t/p/w500'
     const searchURL = BASE_URL + '/search/movie?'+API_KEY
-
+    
+    //'/movie/top_rated?language=en-US&page=1'
     const options = {
         method: 'GET',
         headers: {
@@ -119,10 +121,11 @@ const page = () => {
         ? `https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`
         : '/../../../../public/images/poster.png';
 
+        
 
   return (
-    <div className={`${sidebar ? 'sm:overflow-hidden' : 'overscroll-auto'} w-[100vw] h-[100vh] flex flex-row `}>
-        <div className={`${sidebar ? 'sm:flex overflow-none' : 'hidden'} h-[100vh]  flex-col items-center sm:w-[100%] md:w-[20%] bg-[#000000] rounded-tr-[24px] rounded-br-[24px] pt-6 absolute z-[3] xsm:hidden`}>
+    <div className={`${sidebar ? 'sm:overflow-hidden' : 'overscroll-auto'} w-[100vw] h-[100vh] flex flex-row bg-white `}>
+        <div className={`${sidebar ? 'sm:flex overflow-none' : 'hidden'} h-[100vh]  flex-col items-center sm:w-[100%] md:w-[20%] bg-[#000000] rounded-tr-[24px] rounded-br-[24px] pt-6 absolute z-[3] xsm:hidden text-white`}>
           <span onClick={toggleSideBar} className='cursor-pointer w-[80%] flex flex-row  justify-around items-center text-[24px] font-semibold'>
                     <Image src={tv} alt="logo" width='50' height='50'/>
                     <h4>MovieBox</h4>
@@ -148,15 +151,16 @@ const page = () => {
           </span>
         </nav>
         </div>
-        <Image className='absolute bg-contain w-[100vw] ' src={post} alt="poster"/>
-        <div className={`w-[100vw] h-[50vh]`}>
-        <header className='relative xsm:px-3 lg:px-[70px]  w-[100%] xsm:h-[320px] md:h-[400px] lg:h-[600px] '>
-            <nav className='flex flex-row justify-between w-[100%] md:h-[80px] xsm:h-[60px]  items-center '>
+        <Image className=' absolute lg:bg-contain xsm:hidden md:block w-[100vw] md:h-[40vh] lg:h-[70vh] xsm:h-[100vh]' src={post} alt="poster"/>
+        <Image className=' absolute bg-s md:hidden w-[100vw] lg:h-[70vh] xsm:h-[100vh]' src={postsm} alt="poster"/>
+        <div className={`w-[100vw] h-[100vh]`}>
+        <header className='relative xsm:px-3 lg:px-[70px]  w-[100%] xsm:h-[100vh] md:h-[400px] lg:h-[70vh] text-white '>
+            <nav className=' flex flex-row justify-between w-[100%] md:h-[80px] xsm:h-[60px]  items-center '>
                 <span onClick={toggleSideBar} className='flex flex-row gap-2 items-center'>
                     <Image className='md:w-[50px] md:h-[50px] xsm:w-[30px] xsm:h-[30px]'src={tv} alt="logo"/>
                     <h4 className='xsm:hidden md:block'>MovieBox</h4>
                 </span>
-                <span onChange={handleInputChange} className='flex items-center xsm:w-[200px] md:w-[525px] md:h-[36px] bg-transparent border-white border-2 rounded-[8px] px-4 justify-between'>
+                <span onChange={handleInputChange} className='flex items-center xsm:w-[200px] md:w-[525px] md:h-[36px] bg-transparent border-white md:border-2 xsm:border-[1px] md:rounded-[8px] xsm:rounded-[4px] px-4 justify-between'>
                     <input className='placeholder:text-[10px] bg-transparent w-[95%] border-none outline-none xsm:text-[12px] md:text-[16px]' type="text" placeholder='what do you want to watch?' />
                     <span onClick={handleSubmit}>
                     <AiOutlineSearch/>
@@ -170,9 +174,9 @@ const page = () => {
                     </span>
                 </span>
             </nav>
-            <div className=' lg:mt-20 md:mt-5 xsm:mt-4 md:w-[300px] xsm:w-[200px] flex flex-col lg:gap-[16px] xsm:gap-[14px] md:gap-[12px] '> 
-                <h2 className='xsm:text-[20px] sm:text-[24px] md:text-[40px] md:leading-[42px] lg:text-[48px] lg:leading-[56px] xsm:leading-[20px] sm:leading-[26px] font-bold'>John Wick 3: <br />Parabellum</h2>
-                <div className=' flex flex-row md:gap-5 xsm:gap-2  xsm:text-[10px] md:text-[12px]'> 
+            <div className=' lg:mt-24 md:mt-5 xsm:mt-10 md:w-[300px] xsm:w-[200px] flex flex-col lg:gap-[16px] xsm:gap-[14px] md:gap-[12px] w-[80%]  '> 
+                <h2 className='xsm:text-[30px]  md:text-[40px] md:leading-[42px] lg:text-[48px] lg:leading-[56px] xsm:leading-[32px]  font-bold '>John Wick 3: <br />Parabellum</h2>
+                <div className=' flex flex-row md:gap-5 xsm:gap-2  xsm:text-[10px] md:text-[12px] xsm:text-white '> 
                     <span className='flex flex-row items-center xsm:gap-2 md:gap-2'>
                         <Image src={imdb} alt="imdb"/>
                         <h4>86.0/100</h4>
@@ -182,17 +186,17 @@ const page = () => {
                         <h4>97%</h4>
                     </span>
                 </div>
-                <p className='xsm:text-[10px] sm:text-[12px] md:text-[12px] lg:text-[14px] md:w-auto xsm:w-[100%] '>John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.</p>
+                <p className='xsm:text-[16px]  md:text-[12px] lg:text-[14px] md:w-auto sm:w-[150%]   text-white '>John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.</p>
                 <button className='flex items-center justify-center gap-2 lg:w-[169px] xsm:w-[120px] xsm:h-[28px] lg:h-[36px] text-white bg-[#BE123C] lg:text-[14px] xsm:text-[10px] rounded-[6px]'><span className='text-[20px]'><AiFillPlayCircle/></span>WATCH TRAILER</button>
             </div>
         </header>
-        <section className=' xsm:mt-0 sm:mt-8 lg:mt-20 md:mt-2 xsm:px-[10px] lg:px-[70px]   w-[100vw] '>
+        <section className=' xsm:mt-6 sm:mt-8 lg:mt-12 md:mt-24 xsm:px-[10px] md:px-[20px] lg:px-[40px] w-[100vw] min-h-[100vh]  '>
             <article className='flex flex-col text-white ' >
                 <div className='flex flex-row justify-between items-center w-[100%] '>
-                    <h2 className='sm:text-[18px] xsm:text-[14px]  md:text-[36px] font-bold'>Featured Movie</h2>
-                    <h4 className='flex flex-row items-center md:text-[18px] xsm:text-[12px]  text-[#f6577f] gap-2'>see more <span className='md:text-[20px] xsm:text-[10px]'><AiOutlineRight/></span></h4>
+                    <h2 className='sm:text-[18px] xsm:text-[18px]  md:text-[36px] font-bold text-black'>Featured Movie</h2>
+                    <h4 className='flex flex-row items-center md:text-[18px] xsm:text-[12px]  text-[#f6577f] gap-2 cursor-pointer'>see more <span className='md:text-[20px] xsm:text-[10px]'><AiOutlineRight/></span></h4>
                 </div>
-                <div className='xsm:mt-3 md:mt-[44px] grid xsm:grid-cols-2 lg:grid-cols-5 md:grid-cols-3 xsm:gap-[30px] md:gap-[40px]   '>
+                <div className='xsm:mt-3 md:mt-[44px] grid xsm:grid-cols-1 lg:grid-cols-5 md:grid-cols-3 xsm:gap-[30px] md:gap-[20px] sm:gap-[25px]   '>
                     {/* loop through all the movies */}
                     {/* Display either top movies or search results */}
             {isloading ? (
@@ -202,21 +206,26 @@ const page = () => {
               ? (Object.values(searchResults).map((movie) => (
                 
                   
-                <figure data-testid='movie-card' key={movie.id} className='relative bg-[#BE123C] shadow-2xl xsm:w-[120px] md:w-[220px] md:h-[490px] xsm:h-[250px] sm:h-[280px] sm:w-[170px] rounded-[6px] text-white'>
-                <span className='absolute z-[2] right-2 top-2'>
-                <Favorite /></span>
-           <div className='delay-75 xsm:w-[120px] md:w-[220px] md:h-[370px] sm:w-[170px] sm:h-[190px] xsm:h-[160px]'>
-           <Link href={`/movie/${movie.id}`}>
-               <Image data-testid='movie-poster' className=' bg-contain md:h-[370px] md:w-[220px] sm:w-[170px] sm:h-[190px]  xsm:h-[160px] xsm:w-[120px]' src={movie.poster_path
-? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-: '/../../public/images/poster.png'}  width='220' height='370' alt="poster"/> </Link>
-           </div>
-          
-           <span className='flex flex-col p-2 md:gap-3 xsm:gap-1 font-semibold md:text-[18px] xsm:text-[13px]'>
-               <h3 data-testid='movie-title'>Title: {movie.title.length > 20 ? (movie.title.slice(0,20)) : movie.title}</h3>
-               <h4 data-testid='movie-release-date' className='md:text-[18px] xsm:text-[12px]'>Released: {movie.release_date}</h4>
-           </span>
-       </figure>
+                <figure data-testid='movie-card' key={movie.id} className='relative bg-white shadow-md  xsm:w-[250px] sm:w-[350px] sm:h-[490px]      xsm:h-[350px]   text-black md:w-[220px] lg:w-[240px]'>
+                             <span className='absolute z-[2] right-2 top-2'>
+                             <Favorite /></span>
+                        <div className='delay-75 xsm:w-[250px] sm:w-[350px] md:h-[370px] sm:h-[370px] xsm:h-[270px] md:w-[220px] lg:w-[240px] '>
+                        <Link href={`/movie/${movie.id}`}>
+                            <Image data-testid='movie-poster' className=' bg-contain sm:h-[370px] sm:w-[350px] md:w-[250px]   xsm:h-[270px] xsm:w-[250px] lg:w-[240px]' src={movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : '/../../public/images/poster.png'}  width='220' height='370' alt="poster"/> </Link>
+                        </div>
+                       
+                        <span className='flex flex-col p-2 lg:text-left xsm:gap-1 font-semibold sm:text-[18px] xsm:text-[13px] '>
+                        <span className='flex-row justify-between items-center  text-[#9CA3AF]'>
+                        <h4 data-testid='movie-release-date' className='md:text-[12px] xsm:text-[12px] text-[#9CA3AF]'>{movie.release_date}</h4>
+                        <p>{movie.imdb_id}</p>
+                        </span>
+                            <h3 className='font-bold' data-testid='movie-title'>{movie.title.length > 48 ? (movie.title.slice(0,48)) : movie.title}</h3>
+
+                            
+                        </span>
+                    </figure>
                  
               ))
                 )
@@ -225,19 +234,24 @@ const page = () => {
                 (Object.values(movies)).map((movie) => (
                         // movie card
                         
-                        <figure data-testid='movie-card' key={movie.id} className='relative bg-[#BE123C] shadow-2xl xsm:w-[120px] md:w-[220px] md:h-[490px] xsm:h-[250px] sm:h-[280px] sm:w-[170px] rounded-[6px] text-white'>
+                        <figure data-testid='movie-card' key={movie.id} className='relative bg-white shadow-md  xsm:w-[250px] sm:w-[350px] sm:h-[490px]      xsm:h-[350px]   text-black md:w-[220px] lg:w-[240px]'>
                              <span className='absolute z-[2] right-2 top-2'>
                              <Favorite /></span>
-                        <div className='delay-75 xsm:w-[120px] md:w-[220px] md:h-[370px] xsm:h-[160px] sm:w-[170px] sm:h-[190px]'>
+                        <div className='delay-75 xsm:w-[250px] sm:w-[350px] md:h-[370px] sm:h-[370px] xsm:h-[270px] md:w-[220px] lg:w-[240px] '>
                         <Link href={`/movie/${movie.id}`}>
-                            <Image data-testid='movie-poster' className='sm:w-[170px] sm:h-[190px]  bg-contain md:h-[370px] md:w-[220px]  xsm:h-[160px] xsm:w-[120px]' src={movie.poster_path
+                            <Image data-testid='movie-poster' className=' bg-contain sm:h-[370px] sm:w-[350px] md:w-[250px]   xsm:h-[270px] xsm:w-[250px] lg:w-[240px]' src={movie.poster_path
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         : '/../../public/images/poster.png'}  width='220' height='370' alt="poster"/> </Link>
                         </div>
                        
-                        <span className='flex flex-col p-2 md:gap-3 xsm:gap-1 font-semibold md:text-[18px] xsm:text-[13px]'>
-                            <h3 data-testid='movie-title'>Title: {movie.title.length > 20 ? (movie.title.slice(0,20)) : movie.title}</h3>
-                            <h4 data-testid='movie-release-date' className='md:text-[18px] xsm:text-[12px]'>Released: {movie.release_date}</h4>
+                        <span className='flex flex-col p-2 lg:text-left xsm:gap-1 font-semibold sm:text-[18px] xsm:text-[13px] '>
+                        <span className='flex-row justify-between items-center  text-[#9CA3AF]'>
+                        <h4 data-testid='movie-release-date' className='md:text-[12px] xsm:text-[12px] text-[#9CA3AF]'>{movie.release_date}</h4>
+                        <p>{movie.imdb_id}</p>
+                        </span>
+                            <h3 className='font-bold' data-testid='movie-title'>{movie.title.length > 48 ? (movie.title.slice(0,48)) : movie.title}</h3>
+
+                            
                         </span>
                     </figure>
                    
@@ -247,7 +261,7 @@ const page = () => {
                 </div>
             </article>
         </section>
-        <footer className='w-[100%] h-[40vh] bg-black mt-10 flex justify-center'>
+        <footer className='w-[100%] h-[40vh] bg-black text-white mt-10 flex justify-center'>
             <article className='flex flex-col items-center justify-center md:gap-12 xsm:gap-6'>
                 <div className='flex flex-row items-center md:text-[24px] xsm:text-[16px] md:gap-12 xsm:gap-6'>
                   <span>
