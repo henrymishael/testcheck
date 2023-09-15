@@ -29,21 +29,7 @@ export default function page() {
         }
       };
 
-      // useEffect (() => {
-      // fetch(`https://api.themoviedb.org/3/movie/${id}?${API_KEY}`, options)
-      //   .then(response => response.json())
-      //   .then(data => {
-      //       setSelectedMovie(data.results.find((x) => x.id === id));
-      //       })
-      //   .catch(err => console.error(err));})
-
-      //   if (!selectedMovie){
-      //       return (
-      //         <>
-      //           Not found
-      //         </>
-      //       )
-      //     }
+      
 
       useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -106,18 +92,18 @@ export default function page() {
           </span>
         </nav>
         </div>
-        <div className='mt-4 relative w-[100%] flex flex-col md:px-16 xsm:px-0 items-center '>
-        <Image  className='rounded-[16px] absolute lg:bg-cover xsm:bg-contain w-[70vw] lg:h-[70vh]' src={posterPath} width='300' height='300'/>
-            <div className='  w-[100%] h-[600px] overflow-hidden flex items-center justify-center  border-white border-4 md:rounded-[24px] xsm:rounded-[4px] md:mt-6 xsm:mt-0'>
+        <div className='mt-4 relative  w-[100%] flex flex-col md:px-16 xsm:px-0 items-center  '>
+        <Image  className='rounded-[16px]  lg:bg-cover xsm:bg-contain w-[70vw] xsm:h-[40vh] lg:h-[60vh]' src={posterPath} width='300' height='300'/>
+            {/* <div className='  w-[100%] h-[600px] overflow-hidden flex items-center justify-center  border-white border-4 md:rounded-[24px] xsm:rounded-[4px] md:mt-6 xsm:mt-10'>
              
-            </div>
-            <div className='mt-3 flex flex-col gap-4 xsm:px-8 md:px-0'>
-              <span className='flex md:flex-row xsm:flex-col gap-6 items-center md:justify-between xsm:justify-center'>
-              <h2 data-testid='movie-title' className='md:text-[30px] xsm:text-[18px]'>Title: {selectedMovie.title}</h2>
+            </div> */}
+            <div className='lg:mt-3 xsm:mt-8  flex flex-col md:gap-4  xsm:gap-1 xsm:px-4 md:px-0'>
+              <span className='flex md:flex-row xsm:flex-col lg:gap-6 xsm:gap-2 items-center md:justify-between xsm:justify-center'>
+              <h2 data-testid='movie-title' className='md:text-[30px] xsm:text-[22px] font-bold'>Title: {selectedMovie.title}</h2>
               <p className='md:text-[20px] xsm:text-[12px] text-center' data-testid='movie-release-date'>Release Date: {utcReleaseDay}</p>
               <p className='md:text-[20px] xsm:text-[12px]'data-testid='movie-runtime'>Runtime: {selectedMovie.runtime}mins</p>
               </span>
-              <p data-testid='movie-overview' className='leading-8'>{selectedMovie.overview}</p>
+              <p data-testid='movie-overview' className='text-[16px] leading-8'>{selectedMovie.overview}</p>
             </div>
         </div>
     </div>
