@@ -117,6 +117,7 @@ const page = () => {
         //onst moviesJSON = JSON.stringify(movies)
         //localStorage.setItem('movies', moviesJSON)
         
+      
         const posterPath = movies.poster_path
         ? `https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`
         : '/../../../../public/images/poster.png';
@@ -199,6 +200,7 @@ const page = () => {
                 <div className='xsm:mt-3 md:mt-[44px] grid xsm:grid-cols-1 lg:grid-cols-5 md:grid-cols-3 xsm:gap-[30px] md:gap-[20px] sm:gap-[25px]   '>
                     {/* loop through all the movies */}
                     {/* Display either top movies or search results */}
+                    
             {isloading ? (
                     <Loader/>
             ) : (
@@ -210,7 +212,7 @@ const page = () => {
                              <span className='absolute z-[2] right-2 top-2'>
                              <Favorite /></span>
                         <div className='delay-75 xsm:w-[250px] sm:w-[350px] md:h-[370px] sm:h-[370px] xsm:h-[270px] md:w-[220px] lg:w-[240px] '>
-                        <Link href={`/movie/${movie.id}`}>
+                        <Link href={`/movies/${movie.id}`}>
                             <Image data-testid='movie-poster' className=' bg-contain sm:h-[370px] sm:w-[350px] md:w-[250px]   xsm:h-[270px] xsm:w-[250px] lg:w-[240px]' src={movie.poster_path
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         : '/../../public/images/poster.png'}  width='220' height='370' alt="poster"/> </Link>
@@ -238,7 +240,7 @@ const page = () => {
                              <span className='absolute z-[2] right-2 top-2'>
                              <Favorite /></span>
                         <div className='delay-75 xsm:w-[250px] sm:w-[350px] md:h-[370px] sm:h-[370px] xsm:h-[270px] md:w-[220px] lg:w-[240px] '>
-                        <Link href={`/movie/${movie.id}`}>
+                        <Link href={`/movies/${movie.id}`}>
                             <Image data-testid='movie-poster' className=' bg-contain sm:h-[370px] sm:w-[350px] md:w-[250px]   xsm:h-[270px] xsm:w-[250px] lg:w-[240px]' src={movie.poster_path
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         : '/../../public/images/poster.png'}  width='220' height='370' alt="poster"/> </Link>
