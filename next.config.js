@@ -1,34 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-// const dotenv = require('dotenv');
+const nextConfig = {
+  images: {
+    domains: ["image.tmdb.org"],
+  },
+};
 
-// // Load environment variables from .env file
-// dotenv.config();
+module.exports = nextConfig;
 
-module.exports = {
-    images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'image.tmdb.org',
-            port: '',
-            pathname: '/t/p/w500/**',
-          },
-          {
-            protocol: 'https',
-            hostname: 'image.tmdb.org',
-            port: '',
-            pathname:  '/t/p/original/**',
-          },
-          {
-            protocol: 'https',
-            hostname: 'image.tmdb.org',
-            port: '',
-            pathname:  '/t/p/w1280/**',
-          },
-        ],
-      },
-
-  
-}
 

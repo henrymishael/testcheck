@@ -44,5 +44,5 @@ Users can search for movies on the search bar of the home page and get results
 Users can click on the image of a particular movie and it directs to the to the details page of that particular movie
 
 //Favorite
-Users can add to favorite movie they are interested n(stil in progress)
+Users can add to favorite movie they are interested in(stil in progress)
 

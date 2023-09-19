@@ -20,3 +20,65 @@ body {
   color: rgb(var(--foreground-rgb));
   background: white;
 }
+
+.slide-in {
+  animation: slide-in 0.5s ease-out forwards, scale-in 0.5s ease-out;
+
+}
+@keyframes slide-in {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+      
+
+  }
+  to {
+      transform: translateX(0%);
+      opacity: 1;
+  }
+}
+
+move-up {
+  animation: move-up 1.0s ease-in-out forwards ;
+  
+}
+@keyframes move-up {
+  from {
+      transform: translateY(30%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0%);
+      opacity: 1;
+  }
+}
+
+.move-slow {
+  animation: move-up 1.3s ease-in-out forwards ;
+  
+}
+@keyframes move-slow {
+  from {
+      transform: translateY(20%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0%);
+      opacity: 1;
+  }
+}
+
+.animate-bounce{
+  animation: bounce 4s ease-in-out forwards;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-3%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

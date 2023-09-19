@@ -8,6 +8,7 @@ import { PiTelevisionLight  } from "react-icons/pi";
 import { LuVideo } from "react-icons/lu";
 import { IoCalendarOutline } from "react-icons/io5";
 import Link from 'next/link';
+import YouTube from 'react-youtube';
 
 
 
@@ -15,11 +16,11 @@ import Link from 'next/link';
 export default function page() {
     
     const [selectedMovie, setSelectedMovie] = useState([]);
-    const IMG_URL = 'https://image.tmdb.org/t/p/w500'
+    const [selectedVideo, setSelectedVideo] = useState([])
+    const IMG_URL = 'https://image.tmdb.org/t/p/original'
     const API_KEY = 'api_key=73014d3d6afb77d4c6482499395d4e95'
-    // const router = useRouter();
-    // const {id} = router.query
     
+    const backgroundImage = `${IMG_URL}${selectedMovie?.backdrop_path}`
     const {id} = useParams();
     const options = {
         method: 'GET',
@@ -55,13 +56,97 @@ export default function page() {
       ? `https://image.tmdb.org/t/p/w1280${selectedMovie.poster_path}`
       : '/../../../../public/images/poster.png';
 
+      async function fetchMovieVideos(movieId) {
+        try {
+          const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=videos,credits`
+          );
+          if (!response.ok) {
+            throw new Error('Failed to fetch movie details');
+          }
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error("Error fetching movie details:", error);
+          throw error;
+        }
+      }
+
+      async function loadMovieTrailer(movieId) {
+        try {
+          const movieDetails = await fetchMovieVideos(movieId);
+      
+          if (movieDetails.videos && movieDetails.videos.results) {
+            // Filter for videos with type 'Trailer'
+            const trailers = movieDetails.videos.results.filter(
+              (video) => video.type === 'Trailer'
+            );
+      
+            // Extract YouTube trailer keys from the filtered trailers
+            const youtubeTrailerKeys = trailers.map((trailer) => trailer.key);
+      
+            return youtubeTrailerKeys;
+          } else {
+            console.error("No videos found for this movie.");
+            return [];
+          }
+        } catch (error) {
+          console.error("Error loading movie trailer:", error);
+          return [];
+        }
+      }
+      
+
+
+      // useEffect(() => {
+      //   const fetchMovieTrailer = async () => {
+      //     try {
+      //       const url = `https://api.themoviedb.org/3/movie/${movieid}?${API_KEY}&language=en-US&append_to_response=videos,credits`;
+
+      //       const response = await fetch(url);
+    
+      //       if (!response.ok) {
+      //         throw new Error(`Failed to fetch movie Trailer. Status code: ${response.status}`);
+      //       }
+    
+      //       const data = await response.json();
+      //       setSelectedVideo(data.videos.resultsfind(
+      //         (video) => video.type === "Trailer"
+      //       ));
+      //     } catch (error) {
+      //       console.error(error);
+      //     }
+      //   };
+    
+      //   fetchMovieTrailer(); // Call the fetchMovieDetails function
+    
+      // }, [id]); 
+
+
+      // const fetchMovieTrailer = async(movieid)  => {
+      //   try {
+      //     const response = await fetch(
+      //       `https://api.themoviedb.org/3/movie/${movieid}?${API_KEY}&language=en-US&append_to_response=videos,credits`
+      //     );
+      //     const data = await response.json();
+      //     return data;
+      //   } catch (error) {
+      //     console.error("Error fetching movie details:", error);
+      //     throw error;
+      //   }
+      // }
+      // const movieDetails = fetchMovieTrailer(id);
+      // if (movieDetails.videos && movieDetails.videos.results) {
+      // const trailer = selectedMovie.videos.results.find(
+      // (video) => video.type === "Trailer"
+      //  );
+
+        // Extract the YouTube trailer key
+      
+     
       const releaseDate = new Date(selectedMovie.release_date);
       const utcReleaseDay = releaseDate.toUTCString().slice(0,17);
-      // const Day = releaseDate.getUTCDate();
-      // const month = releaseDate.getUTCMonth();
-      // const year = releaseDate.getUTCFullYear();
-      
-      // const utcReleaseDay = `${Day}/${month}/${year}`
+    
       
     
   return (
@@ -92,11 +177,9 @@ export default function page() {
           </span>
         </nav>
         </div>
-        <div className='mt-4 relative  w-[100%] flex flex-col md:px-16 xsm:px-0 items-center  '>
-        <Image  className='rounded-[16px]  lg:bg-cover xsm:bg-contain w-[70vw] xsm:h-[40vh] lg:h-[60vh]' src={posterPath} width='300' height='300'/>
-            {/* <div className='  w-[100%] h-[600px] overflow-hidden flex items-center justify-center  border-white border-4 md:rounded-[24px] xsm:rounded-[4px] md:mt-6 xsm:mt-10'>
-             
-            </div> */}
+        <div className='mt-4 w-[100%] flex  flex-col md:px-16 xsm:px-0 items-center  '>
+        <Image  className='rounded-[16px]  lg:bg-cover xsm:bg-contain w-[70vw] xsm:h-[40vh] lg:h-[60vh]' src={backgroundImage} width='300' height='300'/>
+          
             <div className='lg:mt-3 xsm:mt-8  flex flex-col md:gap-4  xsm:gap-1 xsm:px-4 md:px-0'>
               <span className='flex md:flex-row xsm:flex-col lg:gap-6 xsm:gap-2 items-center md:justify-between xsm:justify-center'>
               <h2 data-testid='movie-title' className='md:text-[30px] xsm:text-[22px] font-bold'>Title: {selectedMovie.title}</h2>
@@ -106,6 +189,7 @@ export default function page() {
               <p data-testid='movie-overview' className='text-[16px] leading-8'>{selectedMovie.overview}</p>
             </div>
         </div>
-    </div>
+        </div>
+   
   )
 }
