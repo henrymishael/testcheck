@@ -3,19 +3,14 @@
 
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import tv from '../../../public/images/tv.png';
 import imdb from '../../../public/images/imdb.png';
 import rt from '../../../public/images/tomatoes.png';
 import { AiOutlineSearch  } from "react-icons/ai";
 import { AiFillPlayCircle  } from "react-icons/ai";
-import { PiEqualsBold } from "react-icons/pi";
-import { handleInputChange } from '../functions/page';
-import { handleSubmit } from '../functions/page';
 import { getTrendingMovies } from '../utils/request';
-import post from '../../../public/images/Poster.png';
-import postsm from '../../../public/images/sm.png';
+
 import Navbar from './Navbar.jsx';
-import { IMG_URL } from '../utils/request';
+
 
 function Header() {
     const [trendingMovies, setTrendingMovies] = useState([]);

@@ -2,24 +2,12 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-import imdb from '../../public/images/imdb.png';
-import rt from '../../public/images/tomatoes.png';
-import post from '../../public/images/Poster.png';
-import postsm from '../../public/images/sm.png';
-import { AiOutlineSearch  } from "react-icons/ai";
-import { AiFillPlayCircle  } from "react-icons/ai";
 import { AiOutlineRight  } from "react-icons/ai";
-import { PiEqualsBold } from "react-icons/pi";
 import Loader from './components/loader.jsx';
 import { FaFacebookSquare  } from "react-icons/fa";
 import { FaInstagram  } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-import tv from '../../public/images/tv.png';
-import { LuVideo } from "react-icons/lu";
-import { IoCalendarOutline } from "react-icons/io5";
-import { AiOutlineHome  } from "react-icons/ai";
-import { PiTelevisionLight  } from "react-icons/pi";
 import Link from 'next/link';
 import Favorite from './components/favorite.jsx';
 import Header from './components/header.jsx';
