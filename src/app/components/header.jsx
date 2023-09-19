@@ -14,7 +14,7 @@ import { handleSubmit } from '../functions/page';
 import { getTrendingMovies } from '../utils/request';
 import post from '../../../public/images/Poster.png';
 import postsm from '../../../public/images/sm.png';
-import  Navbar  from './src/app/components/navbar.jsx';
+import Navbar from './navbar';
 import { IMG_URL } from '../utils/request';
 
 function Header() {
