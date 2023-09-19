@@ -22,7 +22,7 @@ import { AiOutlineHome  } from "react-icons/ai";
 import { PiTelevisionLight  } from "react-icons/pi";
 import Link from 'next/link';
 import Favorite from './components/favorite';
-import Header from './components/Header';
+import Header from './components/header.jsx';
 
 
 
