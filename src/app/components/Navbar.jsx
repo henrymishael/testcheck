@@ -9,7 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 
-export const Navbar = ({movie}) => {
+const Navbar = () => {
     const [inputValue, setInputValue] = useState('');
     const [searchResults, setSearchResults] = useState([])
     const [error, setError] = useState(null);
@@ -115,3 +115,4 @@ export const Navbar = ({movie}) => {
     </div>
   )
   }
+  export default Navbar
