@@ -10,7 +10,7 @@ import { AiOutlineSearch  } from "react-icons/ai";
 import { AiFillPlayCircle  } from "react-icons/ai";
 import { AiOutlineRight  } from "react-icons/ai";
 import { PiEqualsBold } from "react-icons/pi";
-import Loader from './components/loader';
+import Loader from './components/loader.jsx';
 import { FaFacebookSquare  } from "react-icons/fa";
 import { FaInstagram  } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -21,7 +21,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { AiOutlineHome  } from "react-icons/ai";
 import { PiTelevisionLight  } from "react-icons/pi";
 import Link from 'next/link';
-import Favorite from './components/favorite';
+import Favorite from './components/favorite.jsx';
 import Header from './components/header.jsx';
 
 
